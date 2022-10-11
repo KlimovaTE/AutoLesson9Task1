@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
-import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -42,8 +41,8 @@ class DeliveryTest {
         $("[data-test-id='success-notification']")
                 .shouldHave(text("Успешно! " + "Встреча успешно запланирована на " + firstMeetingDate), Duration.ofSeconds(15)).shouldBe(visible);
 
-        $("[data-test-id='date'] .input__control").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
-        $("[data-test-id='date'] .input__control").setValue(secondMeetingDate);
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+        $("[data-test-id='date'] input").setValue(secondMeetingDate);
         $("button.button").click();
         System.out.println(daysToAddForFirstMeeting);
         $("[data-test-id='replan-notification']")
